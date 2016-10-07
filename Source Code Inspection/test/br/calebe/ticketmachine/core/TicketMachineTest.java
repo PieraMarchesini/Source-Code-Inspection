@@ -50,7 +50,7 @@ public class TicketMachineTest {
         assertEquals(2, tm.getSaldo());
     }
     
-    @Test
+    @Test (expected = PapelMoedaInvalidaException.class)
     public void testInserirFalha() throws Exception {
         tm.inserir(3);
         assertEquals(3, tm.getSaldo());
@@ -66,7 +66,7 @@ public class TicketMachineTest {
         assertEquals(5, tm.getSaldo());
     }
     
-    @Test
+    @Test (expected = PapelMoedaInvalidaException.class)
     public void testGetSaldoFalha() throws PapelMoedaInvalidaException {
         tm.inserir(6);
         assertEquals(6, tm.getSaldo());
@@ -87,7 +87,7 @@ public class TicketMachineTest {
     /**
      * Test of imprimir method, of class TicketMachine.
      */
-    @Test
+    @Test(expected = SaldoInsuficienteException.class)
     public void testImprimirFalha() throws Exception {
         tm.inserir(5);
         tm.imprimir();
