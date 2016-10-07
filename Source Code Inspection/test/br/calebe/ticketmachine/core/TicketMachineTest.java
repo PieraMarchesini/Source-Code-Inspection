@@ -5,6 +5,8 @@
  */
 package br.calebe.ticketmachine.core;
 
+import br.calebe.ticketmachine.exception.PapelMoedaInvalidaException;
+import br.calebe.ticketmachine.exception.SaldoInsuficienteException;
 import java.util.Iterator;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -43,33 +45,60 @@ public class TicketMachineTest {
      * Test of inserir method, of class TicketMachine.
      */
     @Test
-    public void testInserir() throws Exception {
+    public void testInserirPassa() throws Exception {
         tm.inserir(2);
         assertEquals(2, tm.getSaldo());
     }
+    
+    @Test
+    public void testInserirFalha() throws Exception {
+        tm.inserir(3);
+        assertEquals(3, tm.getSaldo());
+    }
+    
 
     /**
      * Test of getSaldo method, of class TicketMachine.
      */
     @Test
-    public void testGetSaldo() {
-        
+    public void testGetSaldoPassa() throws PapelMoedaInvalidaException {
+        tm.inserir(5);
+        assertEquals(5, tm.getSaldo());
+    }
+    
+    @Test
+    public void testGetSaldoFalha() throws PapelMoedaInvalidaException {
+        tm.inserir(6);
+        assertEquals(6, tm.getSaldo());
     }
 
     /**
      * Test of getTroco method, of class TicketMachine.
      */
     @Test
-    public void testGetTroco() {
-        
+    public void testGetTroco() throws PapelMoedaInvalidaException, SaldoInsuficienteException {
+     /*
+        tm.inserir(20);
+        tm.imprimir();
+        assertEquals(tm, this);
+        */
     }
 
     /**
      * Test of imprimir method, of class TicketMachine.
      */
     @Test
-    public void testImprimir() throws Exception {
-        
+    public void testImprimirFalha() throws Exception {
+        tm.inserir(5);
+        tm.imprimir();
+        assertEquals(-5, tm.getSaldo());
+    }
+    
+    @Test
+    public void testImprimirDeveriaPassar() throws Exception {
+        tm.inserir(10);
+        tm.imprimir();
+        assertEquals(0, tm.getSaldo());
     }
     
 }
