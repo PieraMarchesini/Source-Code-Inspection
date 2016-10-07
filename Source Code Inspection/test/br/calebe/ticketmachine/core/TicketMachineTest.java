@@ -50,6 +50,36 @@ public class TicketMachineTest {
         assertEquals(2, tm.getSaldo());
     }
     
+    @Test
+    public void testInserirPassa2() throws Exception {
+        tm.inserir(5);
+        assertEquals(5, tm.getSaldo());
+    }
+    
+    @Test
+    public void testInserirPassa3() throws Exception {
+        tm.inserir(10);
+        assertEquals(10, tm.getSaldo());
+    }
+    
+    @Test
+    public void testInserirPassa4() throws Exception {
+        tm.inserir(20);
+        assertEquals(20, tm.getSaldo());
+    }
+    
+    @Test
+    public void testInserirPassa5() throws Exception {
+        tm.inserir(50);
+        assertEquals(50, tm.getSaldo());
+    }
+    
+    @Test
+    public void testInserirPassa6() throws Exception {
+        tm.inserir(100);
+        assertEquals(100, tm.getSaldo());
+    }
+    
     @Test (expected = PapelMoedaInvalidaException.class)
     public void testInserirFalha() throws Exception {
         tm.inserir(3);
@@ -76,12 +106,10 @@ public class TicketMachineTest {
      * Test of getTroco method, of class TicketMachine.
      */
     @Test
-    public void testGetTroco() throws PapelMoedaInvalidaException, SaldoInsuficienteException {
-     /*
+    public void testGetTrocoDeveriaPassar() throws PapelMoedaInvalidaException, SaldoInsuficienteException {
         tm.inserir(20);
         tm.imprimir();
-        assertEquals(tm, this);
-        */
+        assertEquals(10, tm.getTroco());
     }
 
     /**
@@ -94,11 +122,12 @@ public class TicketMachineTest {
         assertEquals(-5, tm.getSaldo());
     }
     
+    /*
     @Test
     public void testImprimirDeveriaPassar() throws Exception {
         tm.inserir(10);
         tm.imprimir();
         assertEquals(0, tm.getSaldo());
     }
-    
+    */
 }
