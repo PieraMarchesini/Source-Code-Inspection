@@ -19,7 +19,6 @@ import static org.junit.Assert.*;
  */
 public class TicketMachineTest {
     private TicketMachine tm;
-    
     public TicketMachineTest() {
     }
     
