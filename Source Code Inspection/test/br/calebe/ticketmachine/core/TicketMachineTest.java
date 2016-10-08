@@ -7,7 +7,6 @@ package br.calebe.ticketmachine.core;
 
 import br.calebe.ticketmachine.exception.PapelMoedaInvalidaException;
 import br.calebe.ticketmachine.exception.SaldoInsuficienteException;
-import java.util.Iterator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -122,12 +121,12 @@ public class TicketMachineTest {
         assertEquals(-5, tm.getSaldo());
     }
     
-    /*
+    
     @Test
     public void testImprimirDeveriaPassar() throws Exception {
         tm.inserir(10);
         tm.imprimir();
         assertEquals(0, tm.getSaldo());
     }
-    */
+   
 }
