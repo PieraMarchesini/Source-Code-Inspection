@@ -110,6 +110,13 @@ public class TicketMachineTest {
         tm.imprimir();
         assertEquals(10, tm.getTroco());
     }
+    
+    @Test(expected = PapelMoedaInvalidaException.class)
+    public void testGetTrocoFalha() throws PapelMoedaInvalidaException, SaldoInsuficienteException {
+        tm.inserir(11);
+        tm.imprimir();
+        assertEquals(1, tm.getTroco());
+    }
 
     /**
      * Test of imprimir method, of class TicketMachine.
